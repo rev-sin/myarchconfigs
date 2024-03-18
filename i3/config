@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:JetBrains Mono 12
+font pango:JetBrains Mono 14
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -32,7 +32,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+exec --no-startup-id nm-applet &
 
 # Use pactl to adjust volume in PulseAudio.
 set $refresh_i3status killall -SIGUSR1 i3status
@@ -236,8 +236,9 @@ bar {
   }  status_command i3status -c $HOME/.config/i3/i3status/i3status.conf
 	position top
   separator_symbol " "
-  #padding 2px 6px 4px 1px
-  padding 0px 
+  # padding 2px 6px 4px 1px
+  padding 0px
+  tray_padding 0
 }
 
 default_border pixel 1
@@ -248,8 +249,7 @@ exec_always picom --config $HOME/.config/picom/picom.conf
 
 exec_always feh --bg-fill $HOME/Pictures/Wallpapers/photo.jpg
 
-exec --no-startup-id discord
 exec --no-startup-id flameshot
 
 bindsym $mod+Shift+s exec --no-startup-id flameshot gui
-
+bindsym $mod+Shift+f exec --no-startup-id firefox
